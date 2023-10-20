@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id');
             $table->string('username');
             $table->string('password');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->integer('role_id');
             $table->rememberToken();
             $table->timestamps();

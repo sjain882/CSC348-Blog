@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image_path');
             $table->unsignedInteger('user_id');
 
+            // Deleting a user deletes all of their posts too
             $table->foreign('user_id')->references('id')->
                 on('users')->onDelete('cascade')->onUpdate('cascade');
         });
