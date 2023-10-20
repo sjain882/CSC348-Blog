@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
         $a->password = bcrypt('changeme');
         $a->picture = null;
         $a->role_id = 0;
+        $a->save();
 
         // \App\Models\User::factory(10)->create();
 
