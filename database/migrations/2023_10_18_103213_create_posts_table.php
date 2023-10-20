@@ -18,6 +18,10 @@ return new class extends Migration
             $table->dateTime('created_time');
             $table->dateTime('edited_time');
             $table->string('image_path');
+            $table->unsignedInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->
+                on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
