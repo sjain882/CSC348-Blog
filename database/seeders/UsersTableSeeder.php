@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
         $a->password = bcrypt('changeme');
         $a->picture = null;
         $a->role_id = 0;
+        $a->timestamps = false;             // Disable Laravel's default timestamp DB columns
         $a->save();
 
         User::factory()->count(3)->create();
