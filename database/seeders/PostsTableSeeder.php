@@ -14,4 +14,5 @@ class PostsTableSeeder extends Seeder
     {
         //
     }
+
 }

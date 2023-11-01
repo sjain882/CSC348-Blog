@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('role_id');
             $table->rememberToken();
             $table->timestamps();
+
+            
+
         });
     }
 
