@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('created_time');
             $table->dateTime('edited_time');
             $table->string('image_path');
-            $table->unsignedInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
 
             // Deleting a user deletes all of their posts too
             $table->foreign('user_id')->references('id')->
