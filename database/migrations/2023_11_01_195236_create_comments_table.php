@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('body');
+            $table->dateTime('created_time');
+            $table->dateTime('edited_time');
+            $table->unsignedInteger('user_id');
+
+            // Deleting a user deletes all of their comments too
+            $table->foreign('user_id')->references('id')->
+            on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
