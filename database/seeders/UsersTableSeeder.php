@@ -22,6 +22,8 @@ class UsersTableSeeder extends Seeder
         $a->role_id = 0;
         $a->save();
 
+        User::factory()->count(3)->create();
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
