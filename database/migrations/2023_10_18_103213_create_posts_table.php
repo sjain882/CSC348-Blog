@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id('id');                       // Primary Key
+            $table->increments('id');                       // Primary Key
             $table->string('body');
             $table->string('title');
             $table->dateTime('created_time');
