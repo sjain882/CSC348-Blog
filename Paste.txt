@@ -1,5 +1,6 @@
 
 
+-------------------------- IMPORTS (OPTIONAL)
 
 
 use App\Models\User;
@@ -10,4 +11,17 @@ use App\Models\Comment;
 
 use App\Models\Post;
 
-User::get();
+
+-------------------------- BASICS
+
+
+App\Models\User::get();
+
+
+-------------------------- RELATIONSHIPS
+
+App\Models\User::find(1)->roles
+
+App\Models\Role::find(1)->users
+
+
