@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
         $a->picture = null;
         $a->save();
         $a->roles()->save($role);
+        $a->save();
 
         User::factory()->count(3)->create();
 
