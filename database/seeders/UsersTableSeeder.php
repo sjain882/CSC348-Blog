@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $roleSize = (Role::get()->count())-1;
+        $role = Role::find($roleSize - ($roleSize - 1));
 
         // Create admin user
         $a = new User;
@@ -20,8 +23,8 @@ class UsersTableSeeder extends Seeder
         $a->email = fake()->unique()->safeEmail();
         $a->password = bcrypt('changeme');
         $a->picture = null;
-        $a->role_id = 0;
         $a->save();
+        $a->roles()->save($role);
 
         User::factory()->count(3)->create();
 
