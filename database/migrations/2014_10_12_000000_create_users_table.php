@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('picture')->nullable();
             $table->unsignedInteger('role_id');
             $table->rememberToken();
-            $table->timestamps();
-
         });
     }
 
