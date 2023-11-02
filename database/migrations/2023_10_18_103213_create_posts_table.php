@@ -15,10 +15,9 @@ return new class extends Migration
             $table->increments('id');                       // Primary Key
             $table->string('body');
             $table->string('title');
-            $table->dateTime('created_time');
-            $table->dateTime('edited_time');
             $table->string('image_path');
             $table->unsignedInteger('user_id');
+            $table->timestamps();
 
             // Deleting a user deletes all of their posts too
             $table->foreign('user_id')->references('id')->

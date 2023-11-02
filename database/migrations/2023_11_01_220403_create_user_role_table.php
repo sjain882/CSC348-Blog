@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
+    public $timestamps = false;
+
     /**
      * Run the migrations.
      */
@@ -15,7 +18,6 @@ return new class extends Migration
             $table->primary(['user_id', 'role_id']);
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('role_id');
-            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->
                 on('users')->onDelete('cascade')->onUpdate('cascade');

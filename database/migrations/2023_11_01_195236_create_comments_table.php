@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('edited_time');
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('user_id');
+            $table->timestamps();
 
             // Deleting a user deletes all of their comments too
             $table->foreign('user_id')->references('id')->
