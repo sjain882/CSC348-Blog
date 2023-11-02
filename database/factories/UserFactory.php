@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -17,11 +18,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+
+        
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'role_id' => fake()->numberBetween(1,3),
+            'role_id' => fake()->numberBetween(1,((Role::get()->count())-1)),
             'password' => bcrypt('changeme'), // password
         ];
     }
