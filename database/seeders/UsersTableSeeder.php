@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
 
         // Create admin user
         $a = new User;
-        $a->username = "Admin";
+        $a->name = "Admin";
         $a->email = fake()->unique()->safeEmail();
         $a->password = bcrypt('changeme');
         $a->picture = null;
