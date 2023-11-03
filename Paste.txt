@@ -24,4 +24,8 @@ App\Models\User::find(1)->roles
 
 App\Models\Role::find(1)->users
 
+App\Models\Role::find(2)->users
+
+App\Models\Role::find(3)->users
+
 
