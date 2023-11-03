@@ -33,8 +33,8 @@ class UsersTableSeeder extends Seeder
         $a->save();
 
         // Random role between 2: Moderator, 3: User and 4: Muted (inclusive)
-        // Using rand() as fake->numberBetween(x,y) is not inclusive of x and y
-        $randomRole = Role::find(rand(($roleSize - ($roleSize - 2)), $roleSize));
+        // Unused: $randomRole = Role::find(rand(($roleSize - ($roleSize - 2)), $roleSize));
+        $randomRole = Role::find(fake()->numberBetween(2,4));
 
         User::factory()
              ->count(3)
