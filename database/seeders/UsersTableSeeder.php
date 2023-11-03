@@ -33,10 +33,11 @@ class UsersTableSeeder extends Seeder
         $a->save();
 
         // Random role between 2: Moderator, 3: User and 4: Muted (inclusive)
-        $randomRole = Role::find(fake()->numberBetween(($roleSize - ($roleSize - 2)), $roleSize));
+        $randomRole = Role::find(fake()->unique(true)->numberBetween(($roleSize - ($roleSize - 2)), $roleSize));
 
         User::factory()
              ->count(3)
+             ->hasAttached($randomRole)
              ->create();
 
         // \App\Models\User::factory(10)->create();
