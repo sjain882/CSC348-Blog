@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $roleSize = (Role::get()->count())-1;
+        $roleSize = (Role::get()->count());
         $adminrole = Role::find($roleSize - ($roleSize - 1));   // Role 1: Admin
         $moderatorRole = Role::find($roleSize - ($roleSize - 2));   // Role 2: Moderator
         $userRole = Role::find($roleSize - ($roleSize - 3));   // Role 3: User
@@ -33,7 +33,8 @@ class UsersTableSeeder extends Seeder
         $a->save();
 
         // Random role between 2: Moderator, 3: User and 4: Muted (inclusive)
-        $randomRole = Role::find(fake()->unique(true)->numberBetween(($roleSize - ($roleSize - 2)), $roleSize));
+        // Using rand() as fake->numberBetween(x,y) is not inclusive of x and y
+        $randomRole = Role::find(rand(($roleSize - ($roleSize - 2)), $roleSize));
 
         User::factory()
              ->count(3)
