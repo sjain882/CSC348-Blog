@@ -15,7 +15,9 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         $roleSize = (Role::get()->count())-1;
-        $role = Role::find($roleSize - ($roleSize - 1));
+        $adminrole = Role::find($roleSize - ($roleSize - 1));   // Role 1: Admin
+        $moderatorRole = Role::find($roleSize - ($roleSize - 2));   // Role 2: Moderator
+        $userRole = Role::find($roleSize - ($roleSize - 3));   // Role 3: User
 
         // Create admin user
         $a = new User;
@@ -24,10 +26,18 @@ class UsersTableSeeder extends Seeder
         $a->password = bcrypt('changeme');
         $a->picture = null;
         $a->save();
-        $a->roles()->save($role);
+        // Assign role
+        $a->roles()->save($adminrole);
+        $a->roles()->save($moderatorRole);
+        $a->roles()->save($userRole);
         $a->save();
 
-        User::factory()->count(3)->create();
+        // Random role between 2: Moderator, 3: User and 4: Muted (inclusive)
+        $randomRole = Role::find(fake()->numberBetween(($roleSize - ($roleSize - 2)), $roleSize));
+
+        User::factory()
+             ->count(3)
+             ->create();
 
         // \App\Models\User::factory(10)->create();
 
