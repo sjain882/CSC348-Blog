@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,6 +20,13 @@ class CommentsTableSeeder extends Seeder
         $firstPostComment->body = 'I commented first!';
         $firstPostComment->post_id = 7;
         $firstPostComment->user_id = 1;
+        $firstPostComment->save();
+
+        // Add a comment to a random post, authored by a random user
+        $firstPostComment = new Comment;
+        $firstPostComment->body = fake()->sentence(1);
+        $firstPostComment->post_id = fake()->numberBetween(1, (Post::get()->count()));
+        $firstPostComment->user_id = fake()->numberBetween(1, (User::get()->count()));
         $firstPostComment->save();
 
     }
