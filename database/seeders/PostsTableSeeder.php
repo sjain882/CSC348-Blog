@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+<<<<<<< HEAD
 use App\Models\Post;
 use App\Models\User;
+=======
+>>>>>>> parent of d1d2c14 (Implement basic Posts table seeder)
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +17,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         // Create the first post
         $firstPost = new Post;
         $firstPost->title = "Hello world!";
@@ -38,6 +42,9 @@ class PostsTableSeeder extends Seeder
         $thirdPost->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
         $thirdPost->save();
 
+=======
+        //
+>>>>>>> parent of d1d2c14 (Implement basic Posts table seeder)
     }
 
 }
