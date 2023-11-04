@@ -50,7 +50,7 @@ App\Models\User::find(4)->posts
 
 
 
-App\Models\User::find(1)->posts[1]->comments
+App\Models\User::find(1)->posts[0]->comments
 
 App\Models\User::find(2)->posts->comments
 
