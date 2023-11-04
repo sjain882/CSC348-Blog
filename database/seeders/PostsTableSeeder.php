@@ -31,12 +31,12 @@ class PostsTableSeeder extends Seeder
         $secondPost->save();
 
         // Create a post made by a random user with random contents
-        $secondPost = new Post;
-        $secondPost->title = faker()->lorem()->sentence(1);
-        $secondPost->body = faker()->lorem()->paragraph(2);
-        $secondPost->image_path = null;
-        $secondPost->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
-        $secondPost->save();
+        $thirdPost = new Post;
+        $thirdPost->title = faker()->lorem()->sentence(1);
+        $thirdPost->body = faker()->lorem()->paragraph(2);
+        $thirdPost->image_path = null;
+        $thirdPost->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
+        $thirdPost->save();
 
     }
 
