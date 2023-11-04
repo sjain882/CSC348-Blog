@@ -50,7 +50,7 @@ App\Models\User::find(4)->posts
 
 
 
-App\Models\User::find(1)->posts->comments
+App\Models\User::find(1)->posts[1]->comments
 
 App\Models\User::find(2)->posts->comments
 
@@ -67,5 +67,15 @@ App\Models\User::find(2)->comments
 App\Models\User::find(3)->comments
 
 App\Models\User::find(4)->comments
+
+
+
+App\Models\Post::find(1)->comments
+
+App\Models\Post::find(2)->comments
+
+App\Models\Post::find(3)->comments
+
+App\Models\Post::find(4)->comments
 
 
