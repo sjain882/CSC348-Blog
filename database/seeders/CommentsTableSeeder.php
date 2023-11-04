@@ -16,8 +16,9 @@ class CommentsTableSeeder extends Seeder
         // Add a comment to the first post ever created
         $firstPostComment = new Comment;
         $firstPostComment->body = 'I commented first!';
-
-
+        $firstPostComment->post_id = 7;
+        $firstPostComment->user_id = 1;
+        $firstPostComment->save();
 
     }
 }
