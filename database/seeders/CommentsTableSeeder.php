@@ -29,5 +29,10 @@ class CommentsTableSeeder extends Seeder
         $firstPostComment->user_id = fake()->numberBetween(1, (User::get()->count()));
         $firstPostComment->save();
 
+        // Add 3 random comments to random posts
+        Comment::factory()
+            ->count(3)
+            ->create();
+
     }
 }
