@@ -33,20 +33,5 @@ class UsersTableSeeder extends Seeder
         $a->roles()->save($userRole);
         $a->save();
 
-        // Random role choice of 2: Moderator, 3: User and 4: Muted (inclusive)
-        // Unused: $randomRole = Role::find(rand(($roleSize - ($roleSize - 2)), $roleSize));
-        $randomRole = Role::find(fake()->numberBetween(2,4));
-
-        User::factory()
-             ->count(3)
-             ->hasAttached($randomRole)
-             ->create();
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
