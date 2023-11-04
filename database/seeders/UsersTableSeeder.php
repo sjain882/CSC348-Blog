@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -35,10 +36,11 @@ class UsersTableSeeder extends Seeder
         $adminUser->roles()->save($userRole);
         $adminUser->save();
 
-        // Create 3 random 'fake' users
+        // Create 3 random 'fake' users, each with 2 posts, each with 2 comments
         User::factory()
             ->count(3)
             ->has(Post::factory()->count(2))
+            ->has(Comment::factory()->count(2))
             ->create();
 
     }
