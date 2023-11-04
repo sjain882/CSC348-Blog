@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +17,31 @@ class RoleFactory extends Factory
      */
     public function definition(): array
     {
+
+        $roleId = fake()->numberBetween(2,((Role::get()->count())));
+        $roleName = "";
+        
+        switch ($roleId)
+        {
+            case 0:
+                break;
+            case 1:
+                $roleName = Role::find(1)->name;
+                break;
+            case 2:
+                $roleName = Role::find(2)->name;
+                break;
+            case 3:
+                $roleName = Role::find(3)->name;
+                break;
+            case 4:
+                $roleName = Role::find(4)->name;
+                break;
+        }
+
         return [
-            'id' => fake()->numberBetween(2,((Role::get()->count()))),
-            'name' => fake()->randomElement(["Moderator"])
+            'id' => $roleId,
+            'name' => $roleName
         ];
     }
 }

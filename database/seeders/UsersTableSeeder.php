@@ -26,19 +26,21 @@ class UsersTableSeeder extends Seeder
         $a->password = bcrypt('changeme');
         $a->picture = null;
         $a->save();
-        // Assign role
+
+        // Assign relevant roles
         $a->roles()->save($adminrole);
         $a->roles()->save($moderatorRole);
         $a->roles()->save($userRole);
         $a->save();
 
-        // Random role between 2: Moderator, 3: User and 4: Muted (inclusive)
+        // Random role choice of 2: Moderator, 3: User and 4: Muted (inclusive)
         // Unused: $randomRole = Role::find(rand(($roleSize - ($roleSize - 2)), $roleSize));
         $randomRole = Role::find(fake()->numberBetween(2,4));
 
         User::factory()
              ->count(3)
-             ->hasAttached($randomRole)
+             ->hasAttached(Role::factory()->count(1))
+             //->hasAttached($randomRole)
              ->create();
 
         // \App\Models\User::factory(10)->create();
