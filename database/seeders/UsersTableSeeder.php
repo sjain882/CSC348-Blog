@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -37,6 +38,7 @@ class UsersTableSeeder extends Seeder
         // Create 3 random 'fake' users
         User::factory()
             ->count(3)
+            ->has(Post::factory()->count(2))
             ->create();
 
     }
