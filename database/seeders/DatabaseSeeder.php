@@ -17,10 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
 
-        // Random role choice of 2: Moderator, 3: User and 4: Muted (inclusive)
-        // Unused: $randomRole = Role::find(rand(($roleSize - ($roleSize - 2)), $roleSize));
-        $randomRole = Role::find(fake()->numberBetween(2,4));
-
         User::factory()
              ->count(3)
              ->create();
