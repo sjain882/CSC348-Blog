@@ -31,10 +31,34 @@ class UserFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (User $user) {
-            // Assign a random role (we can have multiple admins, so any role OK)
-            $user->roles()->attach(Role::all()->random(1));
 
-            // Depending on which role was assigned, assign all lower roles too
+            // Choose a random role
+            $randomRole = Role::all()->random(1);
+
+            // Assign a random role (we can have multiple admins, so any role OK)
+            $user->roles()->attach($randomRole);
+
+            // Depending on which role was assigned, assign all the lower roles too
+            switch ($randomRole[0]->id)
+            {
+                case 0:
+                    break;
+                case 1:
+                    $user->roles()->attach(Role::find(2));
+                    $user->roles()->attach(Role::find(3));
+                    $user->roles()->attach(Role::find(4));
+                    break;
+                case 2:
+                    $user->roles()->attach(Role::find(3));
+                    $user->roles()->attach(Role::find(4));
+                    break;
+                case 3:
+                    $user->roles()->attach(Role::find(4));
+                    break;
+                case 4:
+                    break;
+            }
+
         });
     }
 
