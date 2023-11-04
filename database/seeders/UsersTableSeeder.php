@@ -39,8 +39,7 @@ class UsersTableSeeder extends Seeder
 
         User::factory()
              ->count(3)
-             ->hasAttached(Role::factory()->count(1))
-             //->hasAttached($randomRole)
+             ->hasAttached($randomRole)
              ->create();
 
         // \App\Models\User::factory(10)->create();
