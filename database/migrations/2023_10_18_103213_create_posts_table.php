@@ -21,7 +21,8 @@ return new class extends Migration
 
             // Deleting a user deletes all of their posts too
             $table->foreign('user_id')->references('id')->
-                on('users')->onDelete('cascade')->onUpdate('cascade');
+            on('users')->onDelete('cascade')->onUpdate('cascade');
+            
         });
     }
 

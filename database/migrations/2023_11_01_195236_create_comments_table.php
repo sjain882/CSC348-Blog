@@ -27,6 +27,7 @@ return new class extends Migration
             // Deleting a post deletes all of its comments too
             $table->foreign('post_id')->references('id')->
             on('posts')->onDelete('cascade')->onUpdate('cascade');
+            
         });
     }
 
