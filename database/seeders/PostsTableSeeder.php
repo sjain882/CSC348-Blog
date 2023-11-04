@@ -19,7 +19,7 @@ class PostsTableSeeder extends Seeder
         $firstPost->title = "Hello world!";
         $firstPost->body = "This is the first ever blog post!";
         $firstPost->image_path = null;
-        $firstPost->user_id = 0;        // Default admin user
+        $firstPost->user_id = 1;        // Default admin user
         $firstPost->save();
 
         // Create a post made by a random user
@@ -32,8 +32,8 @@ class PostsTableSeeder extends Seeder
 
         // Create a post made by a random user with random contents
         $thirdPost = new Post;
-        $thirdPost->title = faker()->lorem()->sentence(1);
-        $thirdPost->body = faker()->lorem()->paragraph(2);
+        $thirdPost->title = fake()->lorem()->sentence(1);
+        $thirdPost->body = fake()->lorem()->paragraph(2);
         $thirdPost->image_path = null;
         $thirdPost->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
         $thirdPost->save();
