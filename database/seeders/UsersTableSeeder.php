@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // Initialisation
         $roleSize = (Role::get()->count());
         $adminrole = Role::find($roleSize - ($roleSize - 1));   // Role 1: Admin
         $moderatorRole = Role::find($roleSize - ($roleSize - 2));   // Role 2: Moderator
@@ -32,6 +33,11 @@ class UsersTableSeeder extends Seeder
         $a->roles()->save($moderatorRole);
         $a->roles()->save($userRole);
         $a->save();
+
+        // Create 3 random 'fake' users
+        User::factory()
+            ->count(3)
+            ->create();
 
     }
 }
