@@ -39,3 +39,33 @@ App\Models\Role::find(3)->users
 App\Models\Role::find(4)->users
 
 
+
+App\Models\User::find(1)->posts
+
+App\Models\User::find(2)->posts
+
+App\Models\User::find(3)->posts
+
+App\Models\User::find(4)->posts
+
+
+
+App\Models\User::find(1)->posts->comments
+
+App\Models\User::find(2)->posts->comments
+
+App\Models\User::find(3)->posts->comments
+
+App\Models\User::find(4)->posts->comments
+
+
+
+App\Models\User::find(1)->comments
+
+App\Models\User::find(2)->comments
+
+App\Models\User::find(3)->comments
+
+App\Models\User::find(4)->comments
+
+
