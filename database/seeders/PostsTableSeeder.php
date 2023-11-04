@@ -32,8 +32,8 @@ class PostsTableSeeder extends Seeder
 
         // Create a post made by a random user with random contents
         $thirdPost = new Post;
-        $thirdPost->title = fake()->lorem()->sentence(1);
-        $thirdPost->body = fake()->lorem()->paragraph(2);
+        $thirdPost->title = fake()->sentence(1);
+        $thirdPost->body = fake()->paragraph(2);
         $thirdPost->image_path = null;
         $thirdPost->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
         $thirdPost->save();
