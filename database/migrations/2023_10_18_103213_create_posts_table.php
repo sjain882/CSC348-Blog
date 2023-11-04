@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');                       // Primary Key
-            $table->string('body');
             $table->string('title');
+            $table->string('body');
             $table->string('image_path')->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
