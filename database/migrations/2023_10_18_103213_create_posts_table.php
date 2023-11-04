@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');                       // Primary Key
             $table->string('body');
             $table->string('title');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
