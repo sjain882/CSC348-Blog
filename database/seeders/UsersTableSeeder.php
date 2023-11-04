@@ -21,18 +21,18 @@ class UsersTableSeeder extends Seeder
         $userRole = Role::find($roleSize - ($roleSize - 3));   // Role 3: User
 
         // Create admin user
-        $a = new User;
-        $a->name = "Admin";
-        $a->email = fake()->unique()->safeEmail();
-        $a->password = bcrypt('changeme');
-        $a->picture = null;
-        $a->save();
+        $adminUser = new User;
+        $adminUser->name = "Admin";
+        $adminUser->email = fake()->unique()->safeEmail();
+        $adminUser->password = bcrypt('changeme');
+        $adminUser->picture = null;
+        $adminUser->save();
 
         // Assign relevant roles
-        $a->roles()->save($adminrole);
-        $a->roles()->save($moderatorRole);
-        $a->roles()->save($userRole);
-        $a->save();
+        $adminUser->roles()->save($adminrole);
+        $adminUser->roles()->save($moderatorRole);
+        $adminUser->roles()->save($userRole);
+        $adminUser->save();
 
         // Create 3 random 'fake' users
         User::factory()
