@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,13 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+            // Create a post made by a random user with random contents
+            'title' => fake()->sentence(1),
+            'body' => fake()->paragraph(2),
+            'image_path' => null,
+            'user_id' => fake()->numberBetween(1, (User::get()->count())) // Random user
+
         ];
     }
 }

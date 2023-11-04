@@ -38,6 +38,16 @@ class PostsTableSeeder extends Seeder
         $thirdPost->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
         $thirdPost->save();
 
+        // Create 5 random posts without comments
+        Post::factory()
+            ->count(5)
+            ->create();
+
+        // Create 5 random posts, each with 2 random comments
+        Post::factory()
+            ->count(5)
+            ->create();
+
     }
 
 }
