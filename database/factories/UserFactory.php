@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -25,6 +26,19 @@ class UserFactory extends Factory
             'password' => bcrypt('changeme'), // password
         ];
     }
+
+
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            // Assign a random role (we can have multiple admins, so any role OK)
+            $user->roles()->attach(Role::all()->random(1));
+
+            // Depending on which role was assigned, assign all lower roles too
+        });
+    }
+
+
 
     /**
      * Indicate that the model's email address should be unverified.
