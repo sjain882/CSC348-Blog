@@ -46,14 +46,11 @@ class UserFactory extends Factory
                 case 1:
                     $user->roles()->attach(Role::find(2));
                     $user->roles()->attach(Role::find(3));
-                    $user->roles()->attach(Role::find(4));
                     break;
                 case 2:
                     $user->roles()->attach(Role::find(3));
-                    $user->roles()->attach(Role::find(4));
                     break;
                 case 3:
-                    $user->roles()->attach(Role::find(4));
                     break;
                 case 4:
                     break;
