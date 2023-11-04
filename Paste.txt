@@ -17,6 +17,12 @@ use App\Models\Post;
 
 App\Models\User::get();
 
+App\Models\Role::get();
+
+App\Models\Post::get();
+
+App\Models\Comment::get();
+
 
 -------------------------- RELATIONSHIPS
 
