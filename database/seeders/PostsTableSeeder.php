@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -46,6 +47,7 @@ class PostsTableSeeder extends Seeder
         // Create 5 random posts, each with 2 random comments
         Post::factory()
             ->count(5)
+            ->has(Comment::factory()->count(2))
             ->create();
 
     }
