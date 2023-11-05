@@ -18,9 +18,7 @@ class PhoneTableSeeder extends Seeder
         $firstNumber = new Phone;
         $firstNumber->phone_num = "+44 1632 960413";
         $firstNumber->user_id = 1;        // Default admin user
-        $firsfirstNumberPost->save();
-
-
+        $firstNumber->save();
 
     }
 }
