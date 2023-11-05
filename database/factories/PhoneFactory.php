@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class PhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'phone_num' => fake()->unique()->e164PhoneNumber(),
+            'user_id' => fake()->numberBetween(1, (User::get()->count()))
         ];
     }
 }
