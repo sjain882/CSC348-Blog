@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    public function phones()
+    public function phone()
     {
         return $this->hasOne(Phone::class);
     }
