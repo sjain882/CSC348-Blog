@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('phones', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
+            $table->string('phone_num');
+            $table->user_id('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->
+                on('user')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
