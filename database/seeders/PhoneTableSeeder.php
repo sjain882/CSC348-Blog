@@ -27,5 +27,7 @@ class PhoneTableSeeder extends Seeder
         $secondNumber->user_id = fake()->numberBetween(1, (User::get()->count())); // Random user
         $secondNumber->save();
 
+        
+
     }
 }
