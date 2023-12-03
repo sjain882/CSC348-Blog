@@ -20,13 +20,13 @@ Route::get('/', function () {
 
 
 
-// Redirect to login if not logged in, or homepage if logged in
+// Offer login button, view posts button
 Route::get('/', function () {
-    return view('welcome');
+    return "This is the blog's home page.";
 });
 
 // Main page with everyone's posts
-Route::get('/home', function () {
+Route::get('/posts', function () {
     return "This is the blog's home page.";
 });
 
@@ -50,7 +50,7 @@ Route::get('/passwordreset', function () {
 // Create new post
 Route::get('/newpost', function () {
     return view('newpost');
-});
+})->middleware(['auth']);
 
 // View a user's profile, posts & comments
 Route::get('/profile/{username}', function($name) {
