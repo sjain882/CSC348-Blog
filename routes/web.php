@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,55 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Redirect to login if not logged in, or homepage if logged in
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Main page with everyone's posts
-Route::get('/home', function () {
-    return "This is the blog's home page.";
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Login existing user
-Route::get('/login', function () {
-    return view('login');
-});
-
-// Register new user
-Route::get('/register', function () {
-    return view('register');
-});
-
-// Forgot password
-Route::get('/passwordreset', function () {
-    return view('passwordreset');
-});
-
-// Create new post
-Route::get('/newpost', function () {
-    return view('newpost');
-});
-
-// View a user's profile, posts & comments
-Route::get('/profile/{username}', function($name) {
-    return "This is $username's blog page.";
-});
-
-// Direct link to a post
-Route::get('/viewpost/{postid}', function () {
-    return "Post ID: $postid";
-});
-
-// Direct link to a comment within a post
-Route::get('/viewpost/{postid}#{commentid}', function () {
-    return "Comment ID: $commentid";
-});
-
-// Redirect users looking for the 'blog' page to the correct home page
-Route::redirect('/blog', '/home');
-
-// Nullable example
-Route::get('/user/{name?}', function($name = '|John') {
-    return "User = $name";
-});
+require __DIR__.'/auth.php';
