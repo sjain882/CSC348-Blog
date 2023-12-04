@@ -57,6 +57,11 @@ Route::get('/profile/{username}', function($name) {
     return "This is $username's blog page.";
 });
 
+// View all users
+Route::get('/users', function($name) {
+    return "All users";
+});
+
 // Direct link to a post
 Route::get('/viewpost/{postid}', function () {
     return "Post ID: $postid";
