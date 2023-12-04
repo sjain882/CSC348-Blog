@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,9 +59,7 @@ Route::get('/profile/{username}', function($name) {
 });
 
 // View all users
-Route::get('/users', function($name) {
-    return "All users";
-});
+Route::get('/users', [UserController::class, 'index']);
 
 // Direct link to a post
 Route::get('/viewpost/{postid}', function () {
