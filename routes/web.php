@@ -58,6 +58,9 @@ Route::get('/profile/{username}', function($name) {
     return "This is $username's blog page.";
 });
 
+// View a user's profile, posts & comments by id
+Route::get('/profile/{id}', [UserController::class, 'show']);
+
 // View all users
 Route::get('/users', [UserController::class, 'index']);
 
