@@ -7,7 +7,7 @@
     <ul>
 
         @foreach ($users as $user)
-            <li>{{ $user ->name }}</li>
+            <li><a href "/profile/{{ $user -> name }}">{{ $user -> name }}</a></li>
         @endforeach
 
     </ul>
