@@ -50,9 +50,9 @@ Route::get('/passwordreset', function () {
 */
 
 // Create new post
-Route::get('/newpost', function () {
-    return view('newpost');
-})->middleware(['auth']);
+Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('posts.create');
+
+Route::post('/posts', [AnimalController::class, 'store'])->name('posts.store');
 
 // View a user's profile, posts & comments
 Route::get('/profile/{username}', function($name) {
@@ -72,12 +72,12 @@ Route::get('/post/{id}', [PostController::class, 'show']);
 Route::get('/posts', [PostController::class, 'index']);
 
 // Direct link to a post
-Route::get('/viewpost/{postid}', function () {
+Route::get('/post/{postid}', function () {
     return "Post ID: $postid";
 });
 
 // Direct link to a comment within a post
-Route::get('/viewpost/{postid}#{commentid}', function () {
+Route::get('/post/{postid}#{commentid}', function () {
     return "Comment ID: $commentid";
 });
 
