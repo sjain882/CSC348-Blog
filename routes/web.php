@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,12 @@ Route::get('/profile/{id}', [UserController::class, 'show']);
 
 // View all users
 Route::get('/users', [UserController::class, 'index']);
+
+// View a post by ID
+Route::get('/post/{id}', [PostController::class, 'show']);
+
+// View all posts
+Route::get('/posts', [PostController::class, 'index']);
 
 // Direct link to a post
 Route::get('/viewpost/{postid}', function () {
