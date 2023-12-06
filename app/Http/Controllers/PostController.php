@@ -30,6 +30,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
         dd($request['name']);
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required|max:2000',
+            'image_path' => 'nullable'
+        ]);
+
     }
 
     /**
