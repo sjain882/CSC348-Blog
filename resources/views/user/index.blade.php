@@ -7,7 +7,7 @@
     <ul>
 
         @foreach ($users as $user)
-            <li><a href "/profile/{{ $user -> name }}">Name: {{ $user -> name }}</a></li>
+            <li><a href route('user.show')>Name: {{ $user -> name }}</a></li>
         @endforeach
 
     </ul>

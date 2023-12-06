@@ -50,31 +50,28 @@ Route::get('/passwordreset', function () {
 */
 
 // Create new post
-Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('posts.create');
+Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
 
-Route::post('/posts', [AnimalController::class, 'store'])->name('posts.store');
+// Store the created post
+Route::post('/posts', [AnimalController::class, 'store'])->name('post.store');
 
-// View a user's profile, posts & comments
-Route::get('/profile/{username}', function($name) {
-    return "This is $username's blog page.";
-});
-
-// View a user's profile, posts & comments by id
-Route::get('/user/{id}', [UserController::class, 'show']);
-
-// View all users
-Route::get('/users', [UserController::class, 'index']);
+// ------------------------------------------------------------
 
 // View a post by ID
-Route::get('/post/{id}', [PostController::class, 'show']);
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
 
 // View all posts
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 
-// Direct link to a post
-Route::get('/post/{postid}', function () {
-    return "Post ID: $postid";
-});
+// ------------------------------------------------------------
+
+// View a user's profile, posts & comments by id
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+
+// View all users
+Route::get('/users', [UserController::class, 'index'])->name('user.index');
+
+// ------------------------------------------------------------
 
 // Direct link to a comment within a post
 Route::get('/post/{postid}#{commentid}', function () {
