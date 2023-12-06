@@ -38,10 +38,10 @@ class PostController extends Controller
         ]);
 
         $post = new Post;
-        $post->name = $validatedData['name'];
+        $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
         $post->image_path = $validatedData['image_path'];
-        $post->user_id = 0;
+        $post->user_id = 1;
         $post->save();
 
         session()->flash('messsage', 'Post successfully created.');

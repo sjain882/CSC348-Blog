@@ -7,9 +7,9 @@
     <form method="POST" action="{{ route('post.store') }}">
 
         @csrf
-        <p>Title: <input type="text" name="name"
+        <p>Title: <input type="text" name="title"
 
-            value="{{ old('name') }}"></p>
+            value="{{ old('title') }}"></p>
 
         <p>Body: <input type="text" name="body"
 
