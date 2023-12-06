@@ -60,7 +60,7 @@ Route::get('/profile/{username}', function($name) {
 });
 
 // View a user's profile, posts & comments by id
-Route::get('/profile/{id}', [UserController::class, 'show']);
+Route::get('/user/{id}', [UserController::class, 'show']);
 
 // View all users
 Route::get('/users', [UserController::class, 'index']);
