@@ -29,13 +29,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request['name']);
+        //dd($request['name']);
 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required|max:2000',
             'image_path' => 'nullable'
         ]);
+
+        $post = new Post;
+        $post->name = $validatedData['name'];
+        $post->body = $validatedData['body'];
+        $post->image_path = $validatedData['image_path'];
+        $post->user_id = 0;
+        $post->save();
+
+        session()->flash('messsage', 'Post successfully created.');
+        return redirect()->route('post.index');
 
     }
 
