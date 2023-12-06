@@ -53,7 +53,7 @@ Route::get('/passwordreset', function () {
 Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
 
 // Store the created post
-Route::post('/posts', [AnimalController::class, 'store'])->name('post.store');
+Route::post('/posts', [PostController::class, 'store'])->name('post.store');
 
 // ------------------------------------------------------------
 
