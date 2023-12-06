@@ -12,7 +12,7 @@
         <p>Image Path: <input type="text" name="name"></p>
         <input type="submit" value="Submit">
 
-        <a href="{{ route('posts.index') }}">Cancel</a>
+        <a href="{{ route('post.index') }}">Cancel</a>
 
     </form>
 
