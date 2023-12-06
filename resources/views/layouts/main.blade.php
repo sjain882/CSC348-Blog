@@ -11,6 +11,11 @@
 
         <h1>ModernBlog - @yield('title')</h1>
 
+        @if (session('message'))
+
+            <p><b>{{ session('message' )}}</b></p>
+        @endif
+
         @if ($errors -> any())
 
             <div>
