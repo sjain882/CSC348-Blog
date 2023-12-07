@@ -7,7 +7,12 @@
     <ul>
 
         @foreach ($users as $user)
-            <li>Name: <a href="{{ route('user.show', ['id' => $user->id]) }}">{{ $user -> name }}</a></li>
+            <li>ID: <a href="{{ route('user.show', ['id' => $user->id]) }}">{{ $user -> name }}</a></li>
+            <li>Name: {{ $user -> name }}</li>
+            <li>Email: {{ $user -> email }}</li>
+            <li>Email Verified At: {{ $user -> email_verified_at ?? 'Unverified' }}</li>
+            <li>Picture path: {{ $user -> picture }}</li>
+            <br>
         @endforeach
 
     </ul>

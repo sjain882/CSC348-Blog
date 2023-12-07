@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 //use DB;
 
@@ -42,7 +43,8 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::findOrFail($id);
-        return view('user.profile', ['user' => $user]);
+        $posts = Post::where('user_id', "=", $user->id)->paginate(10);
+        return view('user.profile', ['user' => $user], ['posts' => $posts]);
     }
 
     /**
