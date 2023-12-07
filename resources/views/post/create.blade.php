@@ -25,7 +25,7 @@
             action="{{ route('post.index') }}">
             @csrf
             @method('GET')
-            <button type="submit">Cancel</button>
+            <button type="button">Cancel</button>
         </form>
 
     </form>
