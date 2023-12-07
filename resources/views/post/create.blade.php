@@ -21,7 +21,12 @@
     
         <input type="submit" value="Submit">
 
-        <a href="{{ route('post.index') }}">Cancel</a>
+        <form method="GET"
+            action="{{ route('post.index') }}">
+            @csrf
+            @method('GET')
+            <button type="submit">Cancel</button>
+        </form>
 
     </form>
 
