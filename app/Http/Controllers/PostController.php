@@ -75,10 +75,12 @@ class PostController extends Controller
     public function edit(string $id)
     {
 
+        $user = Auth::user();
         $userid = Auth::id();
         $post = Post::findOrFail($id);
+        $isAdmin = $user->isAdmin();
 
-        if ($userid == $post->user_id)
+        if ($userid == $post->user_id || $isAdmin)
         {
             return view('post.edit', ['post' => $post]);
         }
