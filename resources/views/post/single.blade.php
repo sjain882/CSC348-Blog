@@ -11,7 +11,12 @@
         <li>Posted by user:  <a href="/user/{{ $post -> user -> id }}">{{ $post -> user -> name }}</a></li>
     </ul>
 
-    <a href="{{ route('post.destroy', ['id' => $post -> id]) }}">Delete Post</a>
+    <form method="POST"
+        action="{{ route('post.destroy', ['id' => $post->id]) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
+    </form>
 
 @endsection
 
