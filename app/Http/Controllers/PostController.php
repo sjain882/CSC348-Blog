@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -21,7 +22,16 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $user = Auth::user();
+        $userRoles = $user->roles();
+
+        if ($user->isAdmin())
+        {
+            dd('true');
+        }
+
+        return view('post.create')->with('message', 'Admin');
+        
     }
 
     /**

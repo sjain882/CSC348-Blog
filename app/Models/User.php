@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->hasOne(Role::find(1)) === null;
+    }
+
     public function phone()
     {
         return $this->hasOne(Phone::class);
