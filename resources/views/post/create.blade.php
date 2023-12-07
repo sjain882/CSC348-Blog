@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('post.store') }}">
+    <form method="PATCH" action="{{ route('post.update') }}">
 
         @csrf
         <p>Title: <input type="text" name="title"

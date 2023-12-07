@@ -79,12 +79,11 @@ class PostController extends Controller
             'image_path' => 'nullable'
         ]);
 
-        $post = Post::findOrFail($id);
-        $post->title = $validatedData['title'];
-        $post->body = $validatedData['body'];
-        $post->image_path = $validatedData['image_path'];
-        $post->user_id = 1;
-        $post->save();
+        $post = Post::findOrFail($id)->update([
+            'title' => $request($validatedData['title']),
+            'body' => $request($validatedData['body']),
+            'image_path' => $request($validatedData['image_path']),
+        ]);
 
         session()->flash('messsage', 'Post was edited.');
         return redirect()->route('post.index')->with('message', 'Post was edited.');

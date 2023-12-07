@@ -16,9 +16,13 @@ use App\Http\Controllers\PostController;
 |
 */
 
+// Default
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Redirect users looking for the 'blog' page to the correct home page
+Route::redirect('/blog', '/home');
 
 // Offer login button, view posts button
 Route::get('/', function () {
@@ -65,23 +69,11 @@ Route::get('/users', [UserController::class, 'index'])->name('user.index');
 // ------------------------------------------------------------
 
 
-// Redirect users looking for the 'blog' page to the correct home page
-Route::redirect('/blog', '/home');
-
-// Nullable example
-Route::get('/user/{name?}', function($name = '|John') {
-    return "User = $name";
-});
-
-
-// ------------------------------------------------------------
-
-
 // Edit post
 Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
 
 // Store the edited post
-Route::put('/posts', [PostController::class, 'update'])->name('post.update');
+Route::patch('/posts', [PostController::class, 'update'])->name('post.update');
 
 // Delete post
 Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.destroy');
@@ -125,5 +117,10 @@ Route::get('/register', function () {
 // Forgot password
 Route::get('/passwordreset', function () {
     return view('passwordreset');
+});
+
+// Nullable example
+Route::get('/user/{name?}', function($name = '|John') {
+    return "User = $name";
 });
 */
