@@ -15,7 +15,7 @@
 
     </ul>
     
-    {{ $posts->links('pagination::bootstrap-5') }}
+    {{ $posts->links() }}
 
     <a href="{{ route('post.create') }}">Create Post</a>
 
