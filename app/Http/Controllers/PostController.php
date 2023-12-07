@@ -33,19 +33,6 @@ class PostController extends Controller
         $posts = Post::paginate(10);
         session()->flash('messsage', 'You are currently muted!');
         return view('post.index', ['posts' => $posts])->with('message', 'You are currently muted!');
-
-
-        /*
-        // only admins can post
-        if ($user->isAdmin())
-        {
-            return view('post.create')->with('message', 'Admin');
-        }
-
-        $posts = Post::paginate(10);
-        session()->flash('messsage', 'Only admins can post');
-        return view('post.index', ['posts' => $posts])->with('message', 'Only admins can post');
-        */
     }
 
     /**
@@ -87,8 +74,20 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
+
+        $userid = Auth::id();
         $post = Post::findOrFail($id);
-        return view('post.edit', ['post' => $post]);
+
+        if ($userid == $post->user_id)
+        {
+            return view('post.edit', ['post' => $post]);
+        }
+        else {
+            $posts = Post::paginate(10);
+            session()->flash('messsage', 'You are currently muted!');
+            return view('post.index', ['posts' => $posts])->with('message', 'You are not the author of this post!');
+        }
+
     }
 
     /**
