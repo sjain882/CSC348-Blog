@@ -14,9 +14,9 @@
         @endforeach
 
     </ul>
+    
+    {{ $posts->links('pagination::bootstrap-5') }}
 
     <a href="{{ route('post.create') }}">Create Post</a>
-
-    {{ $posts->links() }}    
 
 @endsection
