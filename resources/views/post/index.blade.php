@@ -17,4 +17,6 @@
 
     <a href="{{ route('post.create') }}">Create Post</a>
 
+    {{ $posts->links() }}    
+
 @endsection

@@ -11,4 +11,7 @@
         @endforeach
 
     </ul>
+
+    {{ $users->links() }}
+
 @endsection
