@@ -4,9 +4,10 @@
 
 @section('content')
 
-    <form method="PUT" action="{{ route('post.update') }}">
+    <form method="POST" action="{{ route('post.update', $post->id ) }}">
 
         @csrf
+        @method('PUT')
         <p>Title: <input type="text" name="title"
 
             value="{{ old('title') }}"></p>
@@ -21,12 +22,7 @@
     
         <input type="submit" value="Submit">
 
-        <form method="GET"
-            action="{{ route('post.index') }}">
-            @csrf
-            @method('GET')
-            <button type="button">Cancel</button>
-        </form>
+        <a href="{{ route('post.index') }}">Cancel</a>
 
     </form>
 

@@ -73,7 +73,7 @@ Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
 
 // Store the edited post
-Route::patch('/posts', [PostController::class, 'update'])->name('post.update');
+Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
 
 // Delete post
 Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.destroy');

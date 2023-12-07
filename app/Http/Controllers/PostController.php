@@ -63,7 +63,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        return view('post.edit');
+        $post = Post::findOrFail($id);
+        return view('post.edit', ['post' => $post]);
     }
 
     /**
@@ -71,7 +72,6 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //dd($request['name']);
 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
@@ -79,11 +79,9 @@ class PostController extends Controller
             'image_path' => 'nullable'
         ]);
 
-        $post = Post::findOrFail($id)->update([
-            'title' => $request($validatedData['title']),
-            'body' => $request($validatedData['body']),
-            'image_path' => $request($validatedData['image_path']),
-        ]);
+        $post = Post::findOrFail($id);
+        
+        $post->update($validatedData);
 
         session()->flash('messsage', 'Post was edited.');
         return redirect()->route('post.index')->with('message', 'Post was edited.');

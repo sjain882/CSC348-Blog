@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form method="PATCH" action="{{ route('post.update') }}">
+    <form method="POST" action="{{ route('post.store') }}">
 
         @csrf
         <p>Title: <input type="text" name="title"
@@ -21,12 +21,7 @@
     
         <input type="submit" value="Submit">
 
-        <form method="GET"
-            action="{{ route('post.index') }}">
-            @csrf
-            @method('GET')
-            <button type="button">Cancel</button>
-        </form>
+        <a href="{{ route('post.index') }}">Cancel</a>
 
     </form>
 
