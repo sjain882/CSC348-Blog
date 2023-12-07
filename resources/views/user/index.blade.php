@@ -7,7 +7,7 @@
     <ul>
 
         @foreach ($users as $user)
-            <li><a href="{{ route('user.show'), ['id' => $user->id] }}">Name: {{ $user -> name }}</a></li>
+            <li>Name: <a href="{{ route('user.show', ['id' => $user->id]) }}">{{ $user -> name }}</a></li>
         @endforeach
 
     </ul>
