@@ -65,6 +65,16 @@ class User extends Authenticatable
         return $this->hasOne(Role::find(1)) === null;
     }
 
+    public function isModerator()
+    {
+        return $this->hasOne(Role::find(2)) === null;
+    }
+
+    public function isMuted()
+    {
+        return $this->hasOne(Role::find(4)) === null;
+    }
+
     public function phone()
     {
         return $this->hasOne(Phone::class);
