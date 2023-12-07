@@ -117,11 +117,20 @@ class PostController extends Controller
     public function destroy(string $id)
     {
 
-        $user = Auth::id();
-
+        $userid = Auth::id();
         $post = Post::findOrFail($id);
-        $post->delete();
 
-        return redirect()->route('post.index')->with('message', 'Post was deleted.');
+        if ($userid == $post->user_id)
+        {
+            $post->delete();
+            return redirect()->route('post.index')->with('message', 'Post was deleted.');
+        }
+        else {
+            $posts = Post::paginate(10);
+            session()->flash('messsage', 'You are currently muted!');
+            return view('post.index', ['posts' => $posts])->with('message', 'You are not the author of this post!');
+        }
+
+
     }
 }
