@@ -35,7 +35,8 @@ Route::get('/posts', function () {
 
 
 // Create new post
-Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
+Route::get('posts/create', [PostController::class, 'create'])->name('post.create');
+//Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
 
 // Store the created post
 Route::post('/posts', [PostController::class, 'store'])->name('post.store');
