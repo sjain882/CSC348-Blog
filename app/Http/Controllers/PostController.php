@@ -45,7 +45,7 @@ class PostController extends Controller
         $post->save();
 
         session()->flash('messsage', 'Post successfully created.');
-        return redirect()->route('post.index')->with('message', 'Post was created.');
+        return redirect()->route('post.index')->with('message', 'Post successfully created.');
 
     }
 
@@ -63,7 +63,7 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('post.edit');
     }
 
     /**
@@ -71,7 +71,23 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //dd($request['name']);
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required|max:2000',
+            'image_path' => 'nullable'
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->image_path = $validatedData['image_path'];
+        $post->user_id = 1;
+        $post->save();
+
+        session()->flash('messsage', 'Post was edited.');
+        return redirect()->route('post.index')->with('message', 'Post was edited.');
     }
 
     /**

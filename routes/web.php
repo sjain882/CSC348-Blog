@@ -77,7 +77,10 @@ Route::get('/user/{name?}', function($name = '|John') {
 
 
 // Edit post
-Route::get('/post/{id}', [PostController::class, 'destroy'])->name('post.edit');
+Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
+
+// Store the edited post
+Route::put('/posts', [PostController::class, 'update'])->name('post.update');
 
 // Delete post
 Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.destroy');
