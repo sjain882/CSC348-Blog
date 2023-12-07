@@ -24,11 +24,6 @@ Route::get('/', function () {
 // Redirect users looking for the 'blog' page to the correct home page
 Route::redirect('/blog', '/home');
 
-// Offer login button, view posts button
-Route::get('/', function () {
-    return "This is the blog's home page.";
-});
-
 // Main page with everyone's posts
 Route::get('/posts', function () {
     return "This is the blog's home page.";
@@ -39,8 +34,8 @@ Route::get('/posts', function () {
 
 
 // Create new post
-Route::get('posts/create', [PostController::class, 'create'])->name('post.create');
-//Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
+//Route::get('posts/create', [PostController::class, 'create'])->name('post.create');
+Route::get('posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
 
 // Store the created post
 Route::post('/posts', [PostController::class, 'store'])->name('post.store');
@@ -70,7 +65,7 @@ Route::get('/users', [UserController::class, 'index'])->name('user.index');
 
 
 // Edit post
-Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::get('/post/{id}/edit', [PostController::class, 'edit'])->middleware(['auth'])->name('post.edit');
 
 // Store the edited post
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
@@ -99,6 +94,11 @@ require __DIR__.'/auth.php';
 // --- BINNED ---
 
 /*
+// Offer login button, view posts button
+Route::get('/', function () {
+    return "This is the blog's home page.";
+});
+
 // Direct link to a comment within a post
 Route::get('/post/{postid}#{commentid}', function () {
     return "Comment ID: $commentid";
