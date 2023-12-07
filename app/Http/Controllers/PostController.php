@@ -25,13 +25,27 @@ class PostController extends Controller
         $user = Auth::user();
         $userRoles = $user->roles();
 
-        if ($user->isAdmin())
+        if (!$user->isMuted())
         {
-            dd('true');
+            return view('post.create');
         }
 
-        return view('post.create')->with('message', 'Admin');
-        
+        $posts = Post::paginate(10);
+        session()->flash('messsage', 'You are currently muted!');
+        return view('post.index', ['posts' => $posts])->with('message', 'You are currently muted!');
+
+
+        /*
+        // only admins can post
+        if ($user->isAdmin())
+        {
+            return view('post.create')->with('message', 'Admin');
+        }
+
+        $posts = Post::paginate(10);
+        session()->flash('messsage', 'Only admins can post');
+        return view('post.index', ['posts' => $posts])->with('message', 'Only admins can post');
+        */
     }
 
     /**
@@ -102,6 +116,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
+
+        $user = Auth::id();
+
         $post = Post::findOrFail($id);
         $post->delete();
 
