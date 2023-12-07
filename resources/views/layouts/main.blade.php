@@ -13,7 +13,8 @@
 
         @if (session('message'))
 
-            <p><b>{{ session('message' )}}</b></p>
+            <p><b>{{ session('message') }}</b></p>
+            
         @endif
 
         @if ($errors -> any())
@@ -26,7 +27,9 @@
                         <li>{{ $error }} </li>
                     @endforeach
                 </ul>
+
             </div>
+
         @endif
 
         <div>

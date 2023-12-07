@@ -45,7 +45,7 @@ class PostController extends Controller
         $post->save();
 
         session()->flash('messsage', 'Post successfully created.');
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('message', 'Post was created.');
 
     }
 
@@ -79,6 +79,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('post.index')->with('message', 'Post was deleted.');
     }
 }

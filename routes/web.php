@@ -87,8 +87,9 @@ Route::get('/user/{name?}', function($name = '|John') {
 });
 
 
+// ------------------------------------------------------------
 
-
+Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 
 
 Route::get('/dashboard', function () {
