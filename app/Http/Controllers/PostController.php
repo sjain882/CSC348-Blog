@@ -79,7 +79,7 @@ class PostController extends Controller
         $userid = Auth::id();
         $post = Post::findOrFail($id);
 
-        if ($userid == $post->user_id || $user->isAdmin())
+        if (($userid == $post->user_id || $user->isAdmin()) && !$user->isMuted())
         {
             return view('post.edit', ['post' => $post]);
         }
