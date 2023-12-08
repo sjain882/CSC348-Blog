@@ -77,6 +77,12 @@ Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.dest
 // ------------------------------------------------------------
 
 
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+
+// ------------------------------------------------------------
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

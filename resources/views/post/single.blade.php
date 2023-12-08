@@ -15,14 +15,14 @@
         action="{{ route('post.edit', ['id' => $post->id]) }}">
         @csrf
         @method('GET')
-        <button type="submit">Edit</button>
+        <button type="submit">Edit post</button>
     </form>
 
     <form method="POST"
         action="{{ route('post.destroy', ['id' => $post->id]) }}">
         @csrf
         @method('DELETE')
-        <button type="submit">Delete</button>
+        <button type="submit">Delete post</button>
     </form>
 
 @endsection

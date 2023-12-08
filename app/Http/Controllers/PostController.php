@@ -78,9 +78,8 @@ class PostController extends Controller
         $user = Auth::user();
         $userid = Auth::id();
         $post = Post::findOrFail($id);
-        $isAdmin = $user->isAdmin();
 
-        if ($userid == $post->user_id || $isAdmin)
+        if ($userid == $post->user_id || $user->isAdmin())
         {
             return view('post.edit', ['post' => $post]);
         }
@@ -121,14 +120,14 @@ class PostController extends Controller
         $userid = Auth::id();
         $post = Post::findOrFail($id);
 
-        if ($userid == $post->user_id)
+        if ($userid == $post->user_id || $user->isAdmin())
         {
             $post->delete();
             return redirect()->route('post.index')->with('message', 'Post was deleted.');
         }
         else {
             $posts = Post::paginate(10);
-            session()->flash('messsage', 'You are currently muted!');
+            session()->flash('messsage', 'You are not the author of this post!');
             return view('post.index', ['posts' => $posts])->with('message', 'You are not the author of this post!');
         }
 

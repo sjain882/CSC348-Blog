@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 //use DB;
 
 class UserController extends Controller
@@ -68,6 +69,18 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $userid = Auth::id();
+        $user = User::findOrFail($id);
+
+        if ($userid == $id || $user->isAdmin())
+        {
+            $user->delete();
+            return redirect()->route('user.index')->with('message', 'User was deleted.');
+        }
+        else {
+            $posts = Post::paginate(10);
+            session()->flash('messsage', 'You are not this user, or an admin!');
+            return view('post.index', ['posts' => $posts])->with('message', 'You are not this user, or an admin!');
+        }
     }
 }

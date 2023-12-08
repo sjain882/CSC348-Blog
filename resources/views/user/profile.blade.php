@@ -11,6 +11,13 @@
         <li>Picture: {{ $user -> picture }}</li>
         <li>Role: {{ $user -> role_id }}</li>
     </ul>
+
+    <form method="POST"
+        action="{{ route('user.destroy', ['id' => $user->id]) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete user</button>
+    </form>
     
     <br>
 
