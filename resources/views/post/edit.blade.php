@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('post.update') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('post.update', $post->id) }}" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
