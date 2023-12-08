@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,25 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function toggleMute(Request $request, string $id)
+    {
+        $user = User::findOrFail($id);
+        
+        if ($user->isMuted())
+        {
+            $user->roles()->detach(Role::find(4));
+            return redirect()->route('user.index')->with('message', 'User was unmuted.');
+        }
+        else
+        {
+            $user->roles()->attach(Role::find(4));
+            return redirect()->route('user.index')->with('message', 'User was muted.');
+        }
     }
 
     /**
