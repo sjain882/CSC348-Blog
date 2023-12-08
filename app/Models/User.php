@@ -80,4 +80,24 @@ class User extends Authenticatable
         return !$this->hasOne(Phone::class);
     }
 
+    public function canDeleteUser(string $userid)
+    {
+        return ($this->isAdmin() || $this->id == $userid);
+    }
+
+    public function canMuteUser()
+    {
+        return ($this->isAdmin() || $this->isModerator());      
+    }
+
+    public function canEditPost(string $userid)
+    {
+        return ($this->isAdmin() || $this->id == $userid);
+    }
+
+    public function canDeletePost(string $id)
+    {
+        return ($this->isAdmin() || $this->isModerator() || $this->id == $userid);
+    }
+
 }
