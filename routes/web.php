@@ -77,7 +77,7 @@ Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.dest
 // ------------------------------------------------------------
 
 // Toggle mute status
-Route::put('/user/{id}/togglemute', [UserController::class, 'toggleMute'])->name('user.toggleMute');
+Route::patch('/user/{id}', [UserController::class, 'update'])->name('user.update');
 
 // Delete a user
 Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');

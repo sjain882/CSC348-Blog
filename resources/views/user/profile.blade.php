@@ -18,9 +18,9 @@
     </ul>
 
     <form method="POST"
-        action="{{ route('user.toggleMute', ['id' => $user->id]) }}">
+        action="{{ route('user.update', ['id' => $user->id]) }}">
         @csrf
-        @method('PUT')
+        @method('PATCH')
         <button type="submit">Toggle mute status</button>
     </form>
 

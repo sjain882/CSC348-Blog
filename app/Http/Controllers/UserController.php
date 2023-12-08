@@ -62,25 +62,22 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function toggleMute(Request $request, string $id)
-    {
         $user = User::findOrFail($id);
+        $loggedInUser = Auth::user();
         
-        if ($user->isMuted())
+        if ($loggedInUser->isAdmin() || $loggedInUser->isModerator())
         {
-            $user->roles()->detach(Role::find(4));
-            return redirect()->route('user.index')->with('message', 'User was unmuted.');
-        }
-        else
-        {
-            $user->roles()->attach(Role::find(4));
-            return redirect()->route('user.index')->with('message', 'User was muted.');
+            if ($user->isMuted())
+            {
+                $user->roles()->detach(Role::find(4));
+                return redirect()->route('user.index')->with('message', 'User was unmuted.');
+            }
+            else
+            {
+                $user->roles()->attach(Role::find(4));
+                return redirect()->route('user.index')->with('message', 'User was muted.');
+            }
+
         }
     }
 
