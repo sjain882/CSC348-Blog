@@ -17,19 +17,23 @@
             </ul>
     </ul>
 
-    <form method="POST"
-        action="{{ route('user.update', ['id' => $user->id]) }}">
-        @csrf
-        @method('PATCH')
-        <button type="submit">Toggle mute status</button>
-    </form>
+    @if (Auth::user()->canMuteUser())
+        <form method="POST"
+            action="{{ route('user.update', ['id' => $user->id]) }}">
+            @csrf
+            @method('PATCH')
+            <button type="submit">Toggle mute status</button>
+        </form>
+    @endif
 
-    <form method="POST"
-        action="{{ route('user.destroy', ['id' => $user->id]) }}">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Delete user</button>
-    </form>
+    @if (Auth::user()->canDeleteUser($user->id))
+        <form method="POST"
+            action="{{ route('user.destroy', ['id' => $user->id]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete user</button>
+        </form>
+    @endif
     
     <br>
 

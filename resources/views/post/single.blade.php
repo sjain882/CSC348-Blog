@@ -11,19 +11,23 @@
         <li>Posted by user:  <a href="/user/{{ $post -> user -> id }}">{{ $post -> user -> name }}</a></li>
     </ul>
 
-    <form method="GET"
-        action="{{ route('post.edit', ['id' => $post->id]) }}">
-        @csrf
-        @method('GET')
-        <button type="submit">Edit post</button>
-    </form>
+    @if (Auth::user()->canEditPost($post->user_id))
+        <form method="GET"
+            action="{{ route('post.edit', ['id' => $post->id]) }}">
+            @csrf
+            @method('GET')
+            <button type="submit">Edit post</button>
+        </form>
+    @endif
 
-    <form method="POST"
-        action="{{ route('post.destroy', ['id' => $post->id]) }}">
-        @csrf
-        @method('DELETE')
-        <button type="submit">Delete post</button>
-    </form>
+    @if (Auth::user()->canDeletePost($post->user_id))
+        <form method="POST"
+            action="{{ route('post.destroy', ['id' => $post->id]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete post</button>
+        </form>
+    @endif
 
 @endsection
 

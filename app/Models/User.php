@@ -95,7 +95,7 @@ class User extends Authenticatable
         return ($this->isAdmin() || $this->id == $userid);
     }
 
-    public function canDeletePost(string $id)
+    public function canDeletePost(string $userid)
     {
         return ($this->isAdmin() || $this->isModerator() || $this->id == $userid);
     }
