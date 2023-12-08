@@ -62,16 +62,31 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
+        if ($this->hasOne(Role::find(1)) == null)
+        {
+            return false;
+        }
+
         return $this->hasOne(Role::find(1))->isOneOfMany();
     }
 
     public function isModerator()
     {
+        if ($this->hasOne(Role::find(2)) == null)
+        {
+            return false;
+        }
+        
         return $this->hasOne(Role::find(2))->isOneOfMany();
     }
 
     public function isMuted()
     {
+        if ($this->hasOne(Role::find(4)) == null)
+        {
+            return false;
+        }
+
         return $this->hasOne(Role::find(4))->isOneOfMany();
     }
 
