@@ -11,6 +11,11 @@
         <li>Posted by user:  <a href="/user/{{ $post -> user -> id }}">{{ $post -> user -> name }}</a></li>
     </ul>
 
+    @if ($post->image_path != null)
+        <img src='{{ Storage::disk("public")->url($post->image_path) }}'/>
+    @endif
+
+
     @if (Auth::user()->canEditPost($post->user_id))
         <form method="GET"
             action="{{ route('post.edit', ['id' => $post->id]) }}">
