@@ -86,6 +86,12 @@ Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.dest
 // ------------------------------------------------------------
 
 
+// Get
+
+
+// ------------------------------------------------------------
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

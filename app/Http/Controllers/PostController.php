@@ -45,13 +45,22 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required|max:2000',
-            'image_path' => 'nullable'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
         ]);
+
+        //$path = Storage::putFile('post_images', $request->file('image'));
+        if ($request->file('image') != null)
+        {
+            $path = $request->file('image')->store('post_images');
+        }
+        else {
+            $path = null;
+        }
 
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->image_path = $validatedData['image_path'];
+        $post->image_path = $path;
         $post->user_id = 1;
         $post->save();
 

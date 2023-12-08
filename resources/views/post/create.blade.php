@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('post.store') }}">
+    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
 
         @csrf
         <p>Title: <input type="text" name="title"
@@ -14,10 +14,10 @@
         <p>Body: <input type="text" name="body"
 
             value="{{ old('body') }}"></p>
-        
-        <p>Image Path: <input type="text" name="image_path"
 
-            value="{{ old('image_path') }}"></p>
+        <p>Image: <input type="file" name="image"
+
+            value="{{ old('image') }}"></p>
     
         <input type="submit" value="Submit">
 
