@@ -19,7 +19,7 @@
             <button type="submit">Edit post</button>
         </form>
     @endif
-
+    
     @if (Auth::user()->canDeletePost($post->user_id))
         <form method="POST"
             action="{{ route('post.destroy', ['id' => $post->id]) }}">
