@@ -12,6 +12,12 @@
             <li>Email: {{ $user -> email }}</li>
             <li>Email Verified At: {{ $user -> email_verified_at ?? 'Unverified' }}</li>
             <li>Picture path: {{ $user -> picture }}</li>
+            <li>Roles:</li>
+            <ul>
+                @foreach ($user->roles as $role)
+                    <li>{{ $role->name }}</li>
+                @endforeach
+            </ul>
             <br>
         @endforeach
 

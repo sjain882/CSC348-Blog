@@ -9,8 +9,20 @@
         <li>Name: {{ $user -> name }}</li>
         <li>Email: {{ $user -> email }}</li>
         <li>Picture: {{ $user -> picture }}</li>
-        <li>Role: {{ $user -> role_id }}</li>
+        <li>Roles:</li>
+            <ul>
+                @foreach ($user->roles as $role)
+                    <li>{{ $role->name }}</li>
+                @endforeach
+            </ul>
     </ul>
+
+    <form method="POST"
+        action="{{ route('user.toggleMute', ['id' => $user->id]) }}">
+        @csrf
+        @method('PUT')
+        <button type="submit">Toggle mute status</button>
+    </form>
 
     <form method="POST"
         action="{{ route('user.destroy', ['id' => $user->id]) }}">
