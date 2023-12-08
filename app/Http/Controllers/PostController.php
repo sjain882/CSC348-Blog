@@ -48,10 +48,12 @@ class PostController extends Controller
             'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
+        $path = null;
+
         //$path = Storage::putFile('post_images', $request->file('image'));
         if ($request->file('image') != null)
         {
-            $path = $request->file('image')->store('post_images');
+            $path = $request->file('image')->storePublicly('post_images');
         }
         else {
             $path = null;
@@ -61,7 +63,7 @@ class PostController extends Controller
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
         $post->image_path = $path;
-        $post->user_id = 1;
+        $post->user_id = Auth::id();
         $post->save();
 
         session()->flash('messsage', 'Post successfully created.');
@@ -109,12 +111,26 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required|max:2000',
-            'image_path' => 'nullable'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
         ]);
+        
+        $path = null;
+
+        //$path = Storage::putFile('post_images', $request->file('image'));
+        if ($request->file('image') != null)
+        {
+            $path = $request->file('image')->storePublicly('post_images');
+        }
+        else {
+            $path = null;
+        }
 
         $post = Post::findOrFail($id);
-        
-        $post->update($validatedData);
+
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->image_path = $path;
+        $post->save();
 
         session()->flash('messsage', 'Post was edited.');
         return redirect()->route('post.index')->with('message', 'Post was edited.');
