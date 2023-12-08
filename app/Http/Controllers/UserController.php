@@ -65,7 +65,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $loggedInUser = Auth::user();
 
-        dd($loggedInUser->isModerator());
+        //dd($loggedInUser->isModerator());
         
         if ($loggedInUser->isAdmin() || $loggedInUser->isModerator())
         {
