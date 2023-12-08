@@ -64,6 +64,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $loggedInUser = Auth::user();
+
+        dd($loggedInUser->isModerator());
         
         if ($loggedInUser->isAdmin() || $loggedInUser->isModerator())
         {
@@ -79,6 +81,9 @@ class UserController extends Controller
             }
 
         }
+
+        return redirect()->route('user.index')->with('message', 'You are not an admin or moderator!');
+
     }
 
     /**
