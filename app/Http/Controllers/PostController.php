@@ -54,7 +54,6 @@ class PostController extends Controller
         //$path = Storage::putFile('post_images', $request->file('image'));
         if ($request->file('image') != null)
         {
-            // $path = $request->file('image')->storePublicly();
             $path = Storage::put('public/post_images', $request->image);
         }
         else {
@@ -121,7 +120,6 @@ class PostController extends Controller
         //$path = Storage::putFile('post_images', $request->file('image'));
         if ($request->file('image') != null)
         {
-            // $path = $request->file('image')->storePublicly();
             $path = Storage::put('public/post_images', $request->image);
         }
         else {
