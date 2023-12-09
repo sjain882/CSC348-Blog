@@ -12,6 +12,7 @@
     </ul>
 
     @if ($post->image_path != null)
+        {{-- <img src='{{ Storage::disk("public")->url($post->image_path) }}'/> --}}
         <img src='{{ Storage::disk("public")->url($post->image_path) }}'/>
     @endif
 

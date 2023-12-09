@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -53,7 +54,8 @@ class PostController extends Controller
         //$path = Storage::putFile('post_images', $request->file('image'));
         if ($request->file('image') != null)
         {
-            $path = $request->file('image')->storePublicly();
+            // $path = $request->file('image')->storePublicly();
+            $path = Storage::putFile('public', $request->file('image'));
         }
         else {
             $path = null;
@@ -119,7 +121,8 @@ class PostController extends Controller
         //$path = Storage::putFile('post_images', $request->file('image'));
         if ($request->file('image') != null)
         {
-            $path = $request->file('image')->storePublicly();
+            // $path = $request->file('image')->storePublicly();
+            $path = Storage::putFile('public', $request->file('image'));
         }
         else {
             $path = null;
