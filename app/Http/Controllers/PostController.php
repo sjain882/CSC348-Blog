@@ -55,7 +55,7 @@ class PostController extends Controller
         if ($request->file('image') != null)
         {
             // $path = $request->file('image')->storePublicly();
-            $path = Storage::putFile('public', $request->file('image'));
+            $path = Storage::put('public/post_images', $request->image);
         }
         else {
             $path = null;
@@ -64,7 +64,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->image_path = $path;
+        $post->image_path = basename($path);
         $post->user_id = Auth::id();
         $post->save();
 
@@ -122,7 +122,7 @@ class PostController extends Controller
         if ($request->file('image') != null)
         {
             // $path = $request->file('image')->storePublicly();
-            $path = Storage::putFile('public', $request->file('image'));
+            $path = Storage::put('public/post_images', $request->image);
         }
         else {
             $path = null;
@@ -132,7 +132,7 @@ class PostController extends Controller
 
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
-        $post->image_path = $path;
+        $post->image_path = basename($path);
         $post->save();
 
         session()->flash('messsage', 'Post was edited.');
