@@ -62,15 +62,6 @@
             </div>
         </div>
     </div>
-
-
-        <li>Roles:</li>
-            <ul>
-                @foreach ($user->roles as $role)
-                    <li>{{ $role->name }}</li>
-                @endforeach
-            </ul>
-
             
 
 
@@ -87,7 +78,7 @@
 
             @if ($post->image_path != null)
                 <a href="#">
-                    <img class="rounded-t-lg" src='{{ Storage::disk("post-images")->url($post->image_path) }}' alt="Blog post image" />
+                    <img class="rounded-t-lg padding-top:50px padding-right:30px padding-bottom:50px padding-left:80px" src='{{ Storage::disk("post-images")->url($post->image_path) }}' alt="Blog post image" />
                 </a>
             @endif
 
