@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,17 +77,19 @@ Route::delete('/post/{id}', [PostController::class, 'destroy'])->name('post.dest
 
 // ------------------------------------------------------------
 
-// Toggle mute status
-Route::patch('/user/{id}', [UserController::class, 'update'])->name('user.update');
 
-// Delete a user
-Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+// Store the created comment
+Route::post('/post/addComment', [CommentController::class, 'store'])->name('comment.store')->where('id', '[0-9]+');
 
 
 // ------------------------------------------------------------
 
 
-// Get
+// Toggle mute status
+Route::patch('/user/{id}', [UserController::class, 'update'])->name('user.update');
+
+// Delete a user
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 
 // ------------------------------------------------------------

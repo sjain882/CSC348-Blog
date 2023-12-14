@@ -125,7 +125,7 @@ class PostController extends Controller
         else {
             $path = null;
         }
-
+        
         $post = Post::findOrFail($id);
 
         $post->title = $validatedData['title'];
