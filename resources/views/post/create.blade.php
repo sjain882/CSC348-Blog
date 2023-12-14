@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
-@section('content')
+@section('title', 'Create new Post')
 
+@section('content')
 
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
