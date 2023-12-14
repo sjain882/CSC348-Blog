@@ -55,6 +55,10 @@
 
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post -> body }}</p>
 
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Posted at:</strong> {{ $post -> created_at }}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Edited at:</strong> {{ $post -> updated_at }}</p>
+                <br>
+
                 @if (false)
                 <p class="font-normal text-gray-700 dark:text-gray-400">Image filename: {{ $post -> image_path ?? 'No image uploaded' }}</p>
                 <br>

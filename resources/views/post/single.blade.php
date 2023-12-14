@@ -20,6 +20,12 @@
             </a>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post -> body }}</p>
+            
+            <span class="text-sm text-gray-500 dark:text-gray-400">Posted at: {{ $post -> updated_at }}</span>
+            <br>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Edited at: {{ $post -> updated_at }}</span>
+            <br>
+            <br>
 
             @if (false)
             <p class="font-normal text-gray-700 dark:text-gray-400">Image filename: {{ $post -> image_path ?? 'No image uploaded' }}</p>
@@ -89,13 +95,6 @@
 
 
 
-
-
-
-
-
-
-
     <br>
 
     <header>
@@ -117,6 +116,9 @@
             <div class="p-5">
 
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $comment -> body }}</p>
+
+                <span class="text-sm text-gray-500 dark:text-gray-400">Posted at: {{ $comment -> created_at }}</span>
+                <br>
 
                 <a href="/user/{{ $comment -> user -> id }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Posted by {{ $comment -> user -> name }}

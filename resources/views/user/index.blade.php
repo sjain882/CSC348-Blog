@@ -58,7 +58,9 @@
     
                 <span class="text-sm text-gray-500 dark:text-gray-400">ID: {{ $user -> id }}</span>
                 <span class="text-sm text-gray-500 dark:text-gray-400">Email: {{ $user -> email }}</span>
-    
+                <span class="text-sm text-gray-500 dark:text-gray-400">Created at: {{ $user -> created_at }}</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Updated at: {{ $user -> updated_at }}</span>
+
                 <br>
     
                 @if($user->isAdmin())
