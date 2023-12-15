@@ -7,6 +7,7 @@
 
 
 
+{{-- Start of code block attributed to flowbite --}}
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -36,10 +37,12 @@
   </nav>
 
 
+{{-- End of code block attributed to flowbite --}}
 
 
 
   
+{{-- Start of code block attributed to flowbite --}}
 
     <ul>
 
@@ -54,29 +57,42 @@
                 </button>
             </div>
             <div class="flex flex-col items-center pb-10">
+                {{-- End of code block attributed to flowbite --}}
+
+                
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $user -> name }}</h5>
     
                 <span class="text-sm text-gray-500 dark:text-gray-400">ID: {{ $user -> id }}</span>
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <span class="text-sm text-gray-500 dark:text-gray-400">Email: {{ $user -> email }}</span>
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <span class="text-sm text-gray-500 dark:text-gray-400">Created at: {{ $user -> created_at }}</span>
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <span class="text-sm text-gray-500 dark:text-gray-400">Updated at: {{ $user -> updated_at }}</span>
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
 
                 <br>
     
                 @if($user->isAdmin())
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                     <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Admin</span>
                 @endif
                 
                 @if($user->isModerator())
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                     <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Moderator</span>
                 @endif
                 
                 @if($user->isMuted())
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                     <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Muted</span>
                 @endif
     
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">User</span>
     
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <div class="flex mt-4 md:mt-6">
     
                     @if (Auth::user()->canMuteUser())
@@ -84,6 +100,7 @@
                             action="{{ route('user.update', ['id' => $user->id]) }}">
                             @csrf
                             @method('PATCH')
+                            {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                             <button class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Toggle mute status</button>
                         </form>
                     @endif
@@ -94,6 +111,7 @@
                             action="{{ route('user.destroy', ['id' => $user->id]) }}">
                             @csrf
                             @method('DELETE')
+                            {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                             <button class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Delete user</button>
                         </form>
                     @endif

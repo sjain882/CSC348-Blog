@@ -5,6 +5,7 @@
 @section('content')
 
 
+{{-- Start of code block attributed to flowbite --}}
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -33,6 +34,7 @@
     </div>
   </nav>
 
+{{-- End of code block attributed to flowbite --}}
 
 
   <form method="POST" action="{{ route('post.update', $post->id) }}" enctype="multipart/form-data">
@@ -41,24 +43,33 @@
     @method('PUT')
 
     <div class="mb-5">
+      {{-- The entire value of the "class" property here is attributed to flowbite  --}}
         <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+        {{-- The entire value of the "class" property here is attributed to flowbite  --}}
         <input type="text" id="title" name="title" value="{{ old('title') }}" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     </div>
 
     <div class="mb-5">
+      {{-- The entire value of the "class" property here is attributed to flowbite  --}}
         <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
+        {{-- The entire value of the "class" property here is attributed to flowbite  --}}
         <input type="text" id="body" name="body" value="{{ old('body') }}" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     </div>
 
     
+    {{-- The entire value of the "class" property here is attributed to flowbite  --}}
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+    {{-- The entire value of the "class" property here is attributed to flowbite  --}}
     <input aria-describedby="file_input_help" id="image" name="image" type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+    {{-- The entire value of the "class" property here is attributed to flowbite  --}}
     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">JPEG, JPG or PNG (MAX. 2000x2000px).</p>
 
     <br>
 
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
     <input type="submit" value="Submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
 
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
     <a href="{{ route('post.index') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Cancel</a>
 
 </form>

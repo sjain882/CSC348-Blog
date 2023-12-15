@@ -4,6 +4,7 @@
 
 @section('content')
 
+{{-- Start of code block attributed to flowbite --}}
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -32,6 +33,7 @@
     </div>
   </nav>
 
+{{-- End of code block attributed to flowbite --}}
 
 
   
@@ -39,6 +41,8 @@
 
     @foreach ($posts as $post)
 
+    
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
             @if ($post->image_path != null)
@@ -50,22 +54,29 @@
             <div class="p-5">
 
                 <a href="{{ route('post.show', ['id' => $post->id]) }}">
+                  {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post -> title }}</h5>
                 </a>
 
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post -> body }}</p>
 
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Posted at:</strong> {{ $post -> created_at }}</p>
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong>Edited at:</strong> {{ $post -> updated_at }}</p>
                 <br>
 
                 @if (false)
+                {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <p class="font-normal text-gray-700 dark:text-gray-400">Image filename: {{ $post -> image_path ?? 'No image uploaded' }}</p>
                 <br>
                 @endif
 
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                 <a href="/user/{{ $post -> user -> id }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Posted by {{ $post -> user -> name }}
+                    {{-- The entire value of the "class" property here is attributed to flowbite  --}}
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
@@ -86,6 +97,7 @@
     @if (!Auth::user()->isMuted())
 
         <a href="{{ route('post.create') }}">
+          {{-- The entire value of the "class" property here is attributed to flowbite  --}}
         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create New Post</button>
         </a>
     @endif
