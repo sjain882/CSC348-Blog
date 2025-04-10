@@ -1,3 +1,11 @@
+# Building
+
+Simply clone the project & build with `docker run`.
+
+Access the webpage at `127.0.0.1` / `localhost`.
+
+# Previews
+
 ![1](https://github.com/user-attachments/assets/7c5a27d9-b58a-44a0-b154-e283a3c80e98)
 
 ![2](https://github.com/user-attachments/assets/f77bd950-7a9b-4bf6-849f-ee7372607f3e)
